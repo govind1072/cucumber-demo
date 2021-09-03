@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="io.cucumber.zephyr.ZephyrXMLFormatter" skipped="0" tests="4" time="0.003303">
+<testcase classname="Identify all elements on form and submit" name="Complete the registration form" time="0.002033">
+<requirements>
+<requirement>AltID_ZFJCLOUD-15</requirement>
+</requirements>
+<system-out><![CDATA[Given Chrome browser should be opened.......................................passed
+When Zephyrcodecontest website is launched..................................passed
+And the form is submitted with all fields filled............................passed
+Then Successfully submitted message should be shown.........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Identify all elements on form and submit" name="Open zephyrcodecontest.com website and fill multiple values" time="0.000535">
+<requirements>
+<requirement>AltID_ZFJCLOUD-15</requirement>
+</requirements>
+<system-out><![CDATA[Given Chrome browser should be opened.......................................passed
+When Zephyrcodecontest website is launched..................................passed
+And the form is filled with "Pradeep" "kumar" "Male" "2" "1/1/2000".........passed
+And the form is filled with "Red Tea" "Break" "Europe" and "Navigation Commands".passed
+And clicked on submit button................................................passed
+Then Go back to Welcome page and verify title...............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Identify all elements on form and submit" name="Open zephyrcodecontest.com website and fill multiple values 2" time="0.000413">
+<requirements>
+<requirement>AltID_ZFJCLOUD-15</requirement>
+</requirements>
+<system-out><![CDATA[Given Chrome browser should be opened.......................................passed
+When Zephyrcodecontest website is launched..................................passed
+And the form is filled with "Greg" "Mont" "Male" "1" "1/1/2001".............passed
+And the form is filled with "Black Tea" "Harmless Addiction" "Asia" and "Browser Commands".passed
+And clicked on submit button................................................passed
+Then Go back to Welcome page and verify title...............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Identify all elements on form and submit" name="Open zephyrcodecontest.com website and fill multiple values 3" time="0.000322">
+<requirements>
+<requirement>AltID_ZFJCLOUD-15</requirement>
+</requirements>
+<system-out><![CDATA[Given Chrome browser should be opened.......................................passed
+When Zephyrcodecontest website is launched..................................passed
+And the form is filled with "Rex" "Morg" "Male" "3" "3/1/2010"..............passed
+And the form is filled with "oolong tea" "Harmless Addiction" "USA" and "Wait Commands".passed
+And clicked on submit button................................................passed
+Then Go back to Welcome page and verify title...............................passed
+]]></system-out>
+</testcase>
+</testsuite>
