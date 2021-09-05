@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.cucumber:zephyr-xml-formatter:4.2.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Documents/maven/.m2/repository/io/cucumber/zephyr-xml-formatter/4.2.0.1/zephyr-xml-formatter-4.2.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Documents/maven/.m2/repository/io/cucumber/zephyr-xml-formatter/4.2.0.1/zephyr-xml-formatter-4.2.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Documents/maven/.m2/repository/io/cucumber/zephyr-xml-formatter/4.2.0.1/zephyr-xml-formatter-4.2.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

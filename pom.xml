@@ -22,11 +22,7 @@
     </properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-core</artifactId>
-			<version>${cucumber.version}</version>
-		</dependency>
+
 
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -36,25 +32,53 @@
 
 		<dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>${cucumber.version}</version>
+			<artifactId>cucumber-junit</artifactId>
+			<version>5.4.1</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>${cucumber.version}</version>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>5.4.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>5.4.1</version>
+			<scope>test</scope>
 
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>5.4.1</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>4.2.0</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
-
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
    
 </project>
