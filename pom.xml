@@ -17,6 +17,8 @@
         <cucumber.version>4.2.0</cucumber.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
+	<maven.compiler.source>1.8</maven.compiler.source>
+     	<maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 	<dependencies>
