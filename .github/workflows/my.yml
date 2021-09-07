@@ -49,4 +49,4 @@ jobs:
         run: curl -X POST https://c4j.cucumber.io/ci/rest/api/results
         -H 'authorization: ${{ env.TOKEN }}'
         -H 'content-type: ${{ env.CONTENT_TYPE }}'
-        -F results_file=@target/cucumber-reports/Cucumber.json
+        -F results_file=@Cucumber.json
