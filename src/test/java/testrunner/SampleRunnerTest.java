@@ -12,6 +12,6 @@ import org.junit.runner.RunWith;
 //tags = { "@demo" },
 glue = {"stepdefinations"}, plugin = {
 		"io.cucumber.zephyr.ZephyrXMLFormatter:target/zephyr.xml"}, monochrome = false)
-public class SampleRunner {
+public class SampleRunnerTest {
 
 }
