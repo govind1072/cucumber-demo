@@ -50,4 +50,3 @@ jobs:
         -H 'authorization: ${{ env.TOKEN }}'
         -H 'content-type: ${{ env.CONTENT_TYPE }}'
         -F 'results_file=@cucumber-reports/Cucumber.json'
-        -F 'language=jvm'
