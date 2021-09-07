@@ -53,7 +53,7 @@ jobs:
           -F results_file=@target/cucumber-reports/Cucumber.json \
           -F language=jvm
 
-  build-2:
+  Start-Docker:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -66,8 +66,46 @@ jobs:
           java-version: 1.8
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Start Docker
         run: |
-          docker container run -d --name zbot70 -v /github/workspace/target/zephyr.xml:"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=DockerZbot" -e "APITOKEN=73aa838ef039a79e514c5210b835a489a2783242" zsdockerbuild/zsdockerimage:zbot70
+          docker container run -d --name zbot70 -v /github/workspace/target/zephyr.xml:"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=Github" -e "APITOKEN=73aa838ef039a79e514c5210b835a489a2783242" zsdockerbuild/zsdockerimage:zbot70
 
+      # Runs a set of commands using the runners shell
+      - name: Run the Vortex Create Job
+        run: |
+          id=$(curl \
+          -X POST \
+          -H 'Authorization: Bearer 73aa838ef039a79e514c5210b835a489a2783242' \
+          -H 'Content-Type: application/json' \
+          -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"Github ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"JUnit","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1}' \
+          https://demo.yourzephyr.com/flex/services/rest/v3/automation/job/detail)
 
+          x=$(echo "${id}" | awk -F: '/id/ { gsub(/\"|,|\s/,""); gsub(/T.+$/,""); printf ("%s\t", $2)}')
+
+          echo $x
+          sleep 10
+          result=$(
+            curl \
+           -X POST \
+            -H 'Authorization: Bearer 73aa838ef039a79e514c5210b835a489a2783242' \
+            -H 'Content-Type: application/json' \
+            -d '{"ids":['"$x"']}' \
+            https://qademo.yourzephyr.com/flex/services/rest/v3/automation/schedule)
+
+          echo $result
+          sleep 200
+
+          result=$(curl \
+          -X POST \
+          -H 'Authorization: Bearer 73aa838ef039a79e514c5210b835a489a2783242' \
+          -H 'Content-Type: application/json' \
+          -d '{"ids":['"$x"']}' \
+          https://demo.yourzephyr.com/flex/services/rest/v3/automation/job/delete)
+          echo $result
+          sleep 10
+          docker container exec -it zbot70 zbot/zbot_stop.sh
+          sleep 5 
+          docker container rm -f  zbot70
+          echo TestDone 
+          
+        
