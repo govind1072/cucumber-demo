@@ -1,7 +1,7 @@
 package testrunner;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 
 @CucumberOptions(features = { "src/test/java/FeatureFiles" },
 //tags={"@Create"},
-tags = { "@demo" },
-glue = { "stepdefinations" }, plugin = {
+//tags = { "@demo" },
+glue = {"stepdefinations"}, plugin = {
 		"io.cucumber.zephyr.ZephyrXMLFormatter:target/zephyr.xml"}, monochrome = false)
 public class SampleRunner {
 
