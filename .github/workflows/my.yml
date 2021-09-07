@@ -43,5 +43,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjIyNjV9LCJpYXQiOjE2MzEwMDI5Nzl9.g35zTli9WyXxt62LqnHOpc3O7PleDgpNznr8HbZ6ixw' \
+-H 'content-type: multipart/form-data' \
+-F results_file=@results.json \
+-F language=jvm
