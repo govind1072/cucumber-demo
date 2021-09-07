@@ -12,7 +12,7 @@ on:
 
 env:
   CONTENT_TYPE: 'multipart/form-data'
-  TOKEN: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjIyNjV9LCJpYXQiOjE2MzEwMDQwNzJ9.o1V7dpuhJbFUAV8ZHQUjGgYXZAKx_zvvURzJkVPrihY'
+  TOKEN: 'eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjIyNjV9LCJpYXQiOjE2MzEwMDQwNzJ9.o1V7dpuhJbFUAV8ZHQUjGgYXZAKx_zvvURzJkVPrihY'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -46,7 +46,9 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        run: curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
-        -H 'authorization: ${{ env.TOKEN }}' \
-        -H 'content-type: ${{ env.CONTENT_TYPE }}' \
-        -F results_file=@Cucumber.json
+        run: |
+          curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
+          -H "authorization: Bearer ${{ env.TOKEN }}" \
+          -H 'content-type: multipart/form-data' \
+          -F results_file=@target/cucumber-reports/Cucumber.json \
+          -F language=jvm
