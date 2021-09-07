@@ -73,7 +73,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run the Vortex Create Job
         run: |
-          id=$(curl \
+          id=$(
+          curl \
           -X POST \
           -H 'Authorization: Bearer 73aa838ef039a79e514c5210b835a489a2783242' \
           -H 'Content-Type: application/json' \
@@ -95,7 +96,8 @@ jobs:
           echo $result
           sleep 200
 
-          result=$(curl \
+          result=$(
+          curl \
           -X POST \
           -H 'Authorization: Bearer 73aa838ef039a79e514c5210b835a489a2783242' \
           -H 'Content-Type: application/json' \
