@@ -68,6 +68,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          docker container run -d --name zbot70 -v "target/zephyr.xml":"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=DockerZbot" -e "APITOKEN=73aa838ef039a79e514c5210b835a489a2783242" zsdockerbuild/zsdockerimage:zbot70
+          docker container run -d --name zbot70 -v govind1072/cucumber-demo/target/zephyr.xml:"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=DockerZbot" -e "APITOKEN=73aa838ef039a79e514c5210b835a489a2783242" zsdockerbuild/zsdockerimage:zbot70
 
 
