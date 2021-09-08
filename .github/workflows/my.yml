@@ -44,34 +44,19 @@ jobs:
           fetch-depth: 0
       # Runs a single command using the runners shell
       - name: Test
-        run: mvn clean test
-        
-      - name: Publish Test Report
-        uses: mikepenz/action-junit-report@v2
-        if: always() # always run even if the previous step fails
-        with:
-          report_paths: '**/target/zephyr-*.xml'
-
+        run: | 
+          mvn clean test
+          cat /home/runner/work/cucumber-demo/cucumber-demo/target/zephyr.xml
+          
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        run: |
+        run: | 
           curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
           -H "authorization: Bearer ${{ env.TOKEN }}" \
           -H 'content-type: multipart/form-data' \
           -F results_file=@target/cucumber-reports/Cucumber.json \
           -F language=jvm
 
-  Start-Docker:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
 
       # Runs a set of commands using the runners shell
       - name: Start Docker
