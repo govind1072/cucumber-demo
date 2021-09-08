@@ -65,7 +65,7 @@ jobs:
       - name: Start Docker
         run: |
           docker container run -d --name zbot75 -v  "${{ github.workspace }}/config/zephyr.xml":"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=docker" -e "APITOKEN=73aa838ef039a79e514c5210b835a489a2783242" zsdockerbuild/zsdockerimage:zbot75
-          docker exec cat /usr/src/app/zephyr.xml zbot75
+          docker exec -it zbot75 cat /usr/src/app/zephyr.xml 
           
        
     
