@@ -78,7 +78,7 @@ jobs:
         run: |
          curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['"$ID"']}' 
         
-      - run:  sleep 10
+      - run:  sleep 50
       
        
     
