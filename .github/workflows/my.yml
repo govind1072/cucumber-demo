@@ -76,8 +76,19 @@ jobs:
       
       - name: Execute the Job
         run: |
-          curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['"$ID"']}'
-     
+         abc1=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['"$ID"']}' | jq '.id')
+          echo "ID1=$abc1" >> "$GITHUB_ENV1"
+      - run: echo "$ID1"  
+      
+      - name: Check the Job Status
+        run: |
+          until [ $STATUS -eq "complete" ]
+          do
+            abc2=$( curl -u test.manager:test.manager GET https://qademo22.yourzephyr.com/flex/services/rest/latest/automation/schedule?schedulejobid="$ID1" -H 'Content-Type: application/json' | jq '.status')
+            echo "STATUS=$abc2" >> "$GITHUB_ENV2"
+            echo "$STATUS"
+          done
+        
       - run:  sleep 10
           
        
