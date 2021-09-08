@@ -76,7 +76,7 @@ jobs:
       
       - name: Execute the Job
         run: |
-         abc1=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['"$ID"']}' | jq '.id')
+         abc1=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['$ID']}' | jq '.id')
           echo "ID1=$abc1" >> "$GITHUB_ENV1"
       - run: echo "$ID1"  
       
