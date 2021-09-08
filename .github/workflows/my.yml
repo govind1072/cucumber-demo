@@ -87,22 +87,25 @@ jobs:
           
           sleep 10
           
-          result=$(
+        -name: Execute the Job
+          run: |
+            result=$(
             curl -X POST https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule
             -H "Authorization: Bearer ${{ env.API}}" \
             -H 'Content-Type: application/json' \
             -d '{"ids":['"$x"']}')
 
-          echo $result
-          sleep 200
-
+            echo $result
+            sleep 200
+            
+        -name: Delet the Job
+          run: |
           result=$(
           curl -X POST https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/delete
           -H "Authorization: Bearer ${{ env.API}}" \
-          -H 'Content-Type: application/json' \
-          -d '{"ids":['"$x"']}')
+          -H 'Content-Type: application/json' -d '{"ids":['"$x"']}')
           
-          echo $result
+            echo $result
           
           sleep 10
           
