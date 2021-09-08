@@ -64,8 +64,20 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Start Docker
         run: |
-          docker container run -d --name zbot75 -v  "${{ github.workspace }}/config/zephyr.xml":"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=docker" -e "APITOKEN=73aa838ef039a79e514c5210b835a489a2783242" zsdockerbuild/zsdockerimage:zbot75
-          docker exec -t zbot75 cat /usr/src/app/zephyr.xml 
+          docker container run -d --name zbot74 -v  "${{ github.workspace }}/config/zephyr.xml":"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=Github" -e "APITOKEN=ec18f11093d27bf5efed71ce96aeef488d046dde" zsdockerbuild/zsdockerimage:zbot74
+          sleep 20
+             # Runs a set of commands using the runners shell
+      - name: Run the Vortex Create Job
+        run: | 
+          abc=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail -H 'Content-Type: application/json' -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"docker ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"Cucumber","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1,"phaseName":"Node1"}' | jq '.id' )
+          echo "ID=$abc" >> "$GITHUB_ENV"
+      - run: echo "$ID"
+      
+      - name: Execute the Job
+        run: |
+          curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['"$ID"']}'
+     
+      - run:  sleep 10
           
        
     
