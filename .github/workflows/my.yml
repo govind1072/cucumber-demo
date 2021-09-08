@@ -72,6 +72,7 @@ jobs:
         run: |
           docker container run -d --name zbot75 -v /github/workspace/target/zephyr.xml:"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=docker" -e "APITOKEN=73aa838ef039a79e514c5210b835a489a2783242" zsdockerbuild/zsdockerimage:zbot75
           sleep 20
+          docker container exec -it zbot75 ls /usr/src/app/
       # Runs a set of commands using the runners shell
       - name: Run the Vortex Create Job
         run: | 
