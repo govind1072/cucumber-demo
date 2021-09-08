@@ -46,7 +46,7 @@ jobs:
       - name: Test
         run: | 
           mvn clean test
-          cat /home/runner/work/cucumber-demo/cucumber-demo/target/zephyr.xml
+          
           mkdir -p ${{ github.workspace }}/config
           cp -p /home/runner/work/cucumber-demo/cucumber-demo/target/zephyr.xml ${{ github.workspace }}/config
           cat ${{ github.workspace }}/config/zephyr.xml
