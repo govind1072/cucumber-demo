@@ -69,8 +69,8 @@ jobs:
              # Runs a set of commands using the runners shell
       - name: Run the Vortex Create Job
         run: | 
-          abc=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail -H 'Content-Type: application/json' -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"docker ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"Cucumber","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1,"phaseName":"Node1"}' | jq '.id' )
-          echo "ID=$abc" >> "$GITHUB_ENV"
+          ID=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail -H 'Content-Type: application/json' -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"docker ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"Cucumber","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1,"phaseName":"Node1"}' | jq '.id' )
+          
       - run: echo "$ID"
       
       - name: Execute the Job
