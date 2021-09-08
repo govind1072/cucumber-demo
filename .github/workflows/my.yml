@@ -75,8 +75,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run the Vortex Create Job
         run: | 
-         curl -X POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail \
-         -H 'Authorization: Bearer ba842b8652f71ea76e6cfdc71ed62297debac804' \
+         curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail \
          -H 'Content-Type: application/json' \
          -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"Github ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"JUnit","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1,"phaseName":"Node1"}'
          
