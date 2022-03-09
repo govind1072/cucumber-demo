@@ -15,6 +15,24 @@ env:
   TOKEN: 'eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjIyNjV9LCJpYXQiOjE2MzEwMDQwNzJ9.o1V7dpuhJbFUAV8ZHQUjGgYXZAKx_zvvURzJkVPrihY'
   API: '73aa838ef039a79e514c5210b835a489a2783242'
   ZephyUrl: 'https://qademo22.yourzephyr.com'
+  ZephyrToken: ad9f02062f4d394c68ab2a1b4ab1c728b1f53308
+  jobName: "API TesT_new"                 
+  taskDescription: "Task description"
+  automationFramework: "Cucumber"  
+  projectId: 3
+  releaseId: 5
+  cycleName: "Kumar"
+  cycleEndDateStr: "03/24/2022"
+  cycleStartDateStr: "03/03/2022"
+  isReuse: "false"
+  appendDateTimeInCycleName: "false"
+  phaseName: "Cucumber"
+  testRepositoryPath: "Release 1.0 > Cucumber"
+  jobDetailTcrCatalogTreeId: 1
+  assignResultsTo: "-10"
+  timeStamp: "true"
+  json: "{\"releaseId\":${{ env.releaseId }},\"jobName\": \"${{ env.jobName}}\",\"automationFramework\": \"${{ env.automationFramework }}\",\"cycleName\": \"${{ env.cycleName }}\",\"jobDetailTcrCatalogTreeId\":${{ env.jobDetailTcrCatalogTreeId }},\"projectId\":${{ env.projectId }},\"testRepositoryPath\": \"${{ env.testRepositoryPath }}\",\"cycleEndDateStr\": \"${{ env.cycleEndDateStr }}\",\"cycleStartDateStr\": \"${{ env.cycleStartDateStr }}\",\"isReuse\": ${{ env.isReuse }},\"timeStamp\": ${{ env.timeStamp }},\"assignResultsTo\": \"${{ env.assignResultsTo }}\",\"phaseName\": \"${{ env.phaseName }}\"}"
+  resultPath: "@/home/runner/work/cucumber-demo/cucumber-demo/target/zephyr.xml"
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -61,24 +79,30 @@ jobs:
           -F language=jvm
 
 
-      # Runs a set of commands using the runners shell
-      - name: Start Docker
-        run: |
-          docker container run -d --name zbot74 -v  "${{ github.workspace }}/config/zephyr.xml":"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=Github" -e "APITOKEN=ec18f11093d27bf5efed71ce96aeef488d046dde" zsdockerbuild/zsdockerimage:zbot74
-          sleep 10
-          
-             # Runs a set of commands using the runners shell
-      - name: Run the Vortex Create Job
+      - name: Run the API Create and Execute Job
         run: | 
-          abc=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail -H 'Content-Type: application/json' -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"Github ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"Cucumber","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1,"phaseName":"Node1"}' | jq '.id' )
+          abc=$( curl -H 'Content-Type: multipart/form-data" -H "Authorization:  Bearer ${{ env.ZephyrTOKEN }}" -F "fileName=${{ env.resultPath }}" -F "automationJobDetail=${{ env.json }}" -XPOST https://qademo22.yourzephyr.com/flex/services/rest/v4/upload-file/automation/create-and-execute-job | jq '.id' )
            echo "ID=$abc" >> "$GITHUB_ENV"
       - run: echo "$ID"
+
+      # Runs a set of commands using the runners shell
+     # - name: Start Docker
+     #   run: |
+     #     docker container run -d --name zbot74 -v  "${{ github.workspace }}/config/zephyr.xml":"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=Github" -e "APITOKEN=ec18f11093d27bf5efed71ce96aeef488d046dde" zsdockerbuild/zsdockerimage:zbot74
+     #     sleep 10
+          
+             # Runs a set of commands using the runners shell
+     # - name: Run the Vortex Create Job
+    #    run: | 
+     #    abc=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail -H 'Content-Type: application/json' -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"Github ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"Cucumber","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1,"phaseName":"Node1"}' | jq '.id' )
+     #      echo "ID=$abc" >> "$GITHUB_ENV"
+   #   - run: echo "$ID"
       
-      - name: Execute the Job
-        run: |
-         curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['"$ID"']}' 
+    #  - name: Execute the Job
+     #   run: |
+    #     curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/schedule -H 'Content-Type: application/json' -d '{"ids":['"$ID"']}' 
         
-      - run:  sleep 50
+    #  - run:  sleep 50
       
        
     
