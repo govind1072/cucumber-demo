@@ -84,7 +84,11 @@ jobs:
 
       - name: Run the API Create and Execute Job
         run: | 
-          abc=$( curl -H "Content-Type: multipart/form-data" -H "authorization:  Bearer ${{ env.ZephyrTOKEN }}" -F "fileName=${{ env.resultPath }}" -F "automationJobDetail=${{ env.json }}" -XPOST https://qademo22.yourzephyr.com/flex/services/rest/v4/upload-file/automation/create-and-execute-job | jq '.id' )
+          abc=$( curl -X POST https://qademo22.yourzephyr.com/flex/services/rest/v4/upload-file/automation/create-and-execute-job \
+          -H "content-type: multipart/form-data" \
+          -H "authorization:  Bearer ${{ env.ZephyrToken }}" \
+          -F "fileName=${{ env.resultPath }}" \
+          -F "automationJobDetail=${{ env.json }}" | jq '.id' )
            echo "ID=$abc" >> "$GITHUB_ENV"
       - run: echo "$ID"
 
