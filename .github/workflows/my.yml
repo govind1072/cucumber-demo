@@ -84,7 +84,7 @@ jobs:
 
       - name: Run the API Create and Execute Job
         run: | 
-          abc=$( curl -X -i POST https://qademo22.yourzephyr.com/flex/services/rest/v4/upload-file/automation/create-and-execute-job \
+          abc=$( curl -i -X POST https://qademo22.yourzephyr.com/flex/services/rest/v4/upload-file/automation/create-and-execute-job \
           -H "content-type: multipart/form-data" \
           -H "authorization:  Bearer ${{ env.ZephyrToken }}" \
           -F "fileName=${{ env.resultPath }}" \
