@@ -15,7 +15,7 @@ env:
   TOKEN: 'eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjIyNjV9LCJpYXQiOjE2MzEwMDQwNzJ9.o1V7dpuhJbFUAV8ZHQUjGgYXZAKx_zvvURzJkVPrihY'
   API: '73aa838ef039a79e514c5210b835a489a2783242'
   ZephyUrl: 'https://qademo22.yourzephyr.com'
-  ZephyrToken: '806e5d465ced9f25e64442d8459a0262b7825ede'
+  ZephyrToken: '21b404175665334f02eb78274c62cc2aeca2bf20'
   jobName: "Demo API"                 
   taskDescription: 'Task description'
   automationFramework: 'Cucumber'
@@ -23,7 +23,7 @@ env:
   releaseId: '13'
   cycleName: 'CucumberFeature'
   cycleEndDateStr: '03/24/2022'
-  cycleStartDateStr: '03/11/2022'
+  cycleStartDateStr: '03/12/2022'
   isReuse: 'true'
   appendDateTimeInCycleName: 'false'
   phaseName: 'FeatureDemo'
