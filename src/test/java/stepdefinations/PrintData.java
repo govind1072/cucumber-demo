@@ -8,12 +8,12 @@ public class PrintData {
 
 	@Given("^Chrome browser should be opened$")
 	public void chrome_browser_should_be_opened() throws Throwable {
-	    System.out.println("print Given Condition");
+	    System.out.println("print Given Condition.");
 	}
 
 	@When("^Zephyrcodecontest website is launched$")
 	public void zephyrcodecontest_website_is_launched() throws Throwable {
-		System.out.println("print When Condition");
+		System.out.println("print When Condition .");
 	}
 
 	@When("^the form is submitted with all fields filled$")
