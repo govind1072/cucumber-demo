@@ -30,7 +30,7 @@ env:
   testRepositoryPath: 'Release 1.0 > FeatureDemo'
   jobDetailTcrCatalogTreeId: '105'
   assignResultsTo: '-10'
-  timeStamp: 'false'
+  #timeStamp: 'false'
 
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
