@@ -15,22 +15,22 @@ env:
   TOKEN: 'eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjIyNjV9LCJpYXQiOjE2MzEwMDQwNzJ9.o1V7dpuhJbFUAV8ZHQUjGgYXZAKx_zvvURzJkVPrihY'
   API: '73aa838ef039a79e514c5210b835a489a2783242'
   ZephyUrl: 'https://qademo22.yourzephyr.com'
-  ZephyrToken: 'ad9f02062f4d394c68ab2a1b4ab1c728b1f53308'
-  jobName: "API TesT_new"                 
+  ZephyrToken: '806e5d465ced9f25e64442d8459a0262b7825ede'
+  jobName: "Demo API"                 
   taskDescription: 'Task description'
   automationFramework: 'Cucumber'
-  projectId: '3'
-  releaseId: '5'
-  cycleName: 'Kumar'
+  projectId: '6'
+  releaseId: '13'
+  cycleName: 'Cucumber Feature'
   cycleEndDateStr: '03/24/2022'
-  cycleStartDateStr: '03/03/2022'
-  isReuse: 'false'
+  cycleStartDateStr: '03/11/2022'
+  isReuse: 'true'
   appendDateTimeInCycleName: 'false'
-  phaseName: 'Cucumber'
-  testRepositoryPath: 'Release 1.0 > Cucumber'
-  jobDetailTcrCatalogTreeId: '1'
+  phaseName: 'Feature Demo'
+  testRepositoryPath: 'Release 1.0 > Feature Demo'
+  jobDetailTcrCatalogTreeId: '105'
   assignResultsTo: '-10'
-  timeStamp: 'true'
+  timeStamp: 'false'
 
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
