@@ -13,7 +13,7 @@ public class PrintData {
 
 	@When("^Zephyrcodecontest website is launched$")
 	public void zephyrcodecontest_website_is_launched() throws Throwable {
-		System.out.println("print When Condition");
+		System.out.println("print When Condition.");
 	}
 
 	@When("^the form is submitted with all fields filled$")
