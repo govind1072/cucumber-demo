@@ -84,8 +84,9 @@ jobs:
           -H "authorization:  Bearer ${{env.ZephyrToken}}" \
           -F "fileName=@/home/runner/work/cucumber-demo/cucumber-demo/target/zephyr.xml" \
           -F "automationJobDetail={\"releaseId\":${{ env.releaseId }},\"jobName\": \"${{ env.jobName }}\",\"automationFramework\": \"${{ env.automationFramework }}\",\"cycleName\": \"${{ env.cycleName }}\",\"jobDetailTcrCatalogTreeId\":${{ env.jobDetailTcrCatalogTreeId }},\"projectId\":${{ env.projectId }},\"testRepositoryPath\": \"${{ env.testRepositoryPath }}\",\"cycleEndDateStr\": \"${{ env.cycleEndDateStr }}\",\"cycleStartDateStr\": \"${{ env.cycleStartDateStr }}\",\"isReuse\": ${{ env.isReuse }},\"assignResultsTo\": \"${{ env.assignResultsTo }}\",\"phaseName\": \"${{ env.phaseName }}\"}")
+      - run: |   
            echo "ID=$abc" >> "$GITHUB_ENV"
-      - run: echo "$ID"
+      - run: echo $abc
 
       # Runs a set of commands using the runners shell
      # - name: Start Docker
