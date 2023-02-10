@@ -9,7 +9,7 @@ Feature: Identify all elements on form and submit
     Then Successfully submitted message should be shown
 
   @JIRA_CP-2 @CP-2 @OPEN
-  Scenario: Open zephyrcodecontest.com website and fill multiple values
+  Scenario: Open zephyrcodecontest.com website and fill multiple values 4
     Given Chrome browser should be opened
     When Zephyrcodecontest website is launched
     And the form is filled with "Pradeep" "kumar" "Male" "2" "1/1/2000"
