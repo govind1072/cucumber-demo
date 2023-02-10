@@ -1,7 +1,7 @@
 @demo
 Feature: Identify all elements on form and submit
 
-  @JIRA_CP-2
+  @JIRA_CP-2 @CP-2 @OPEN
   Scenario: Complete the registration form
     Given Chrome browser should be opened
     When Zephyrcodecontest website is launched
