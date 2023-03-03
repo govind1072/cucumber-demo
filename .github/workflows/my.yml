@@ -15,20 +15,20 @@ env:
   TOKEN: 'eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjIyNjV9LCJpYXQiOjE2MzEwMDQwNzJ9.o1V7dpuhJbFUAV8ZHQUjGgYXZAKx_zvvURzJkVPrihY'
   API: '73aa838ef039a79e514c5210b835a489a2783242'
   ZephyUrl: 'https://qademo22.yourzephyr.com'
-  ZephyrToken: '21b404175665334f02eb78274c62cc2aeca2bf20'
-  jobName: "Demo API"                 
+  ZephyrToken: '3fa978a1bd2afd038aece11a6fd445f28cf0c619'
+  jobName: "Demo"                 
   taskDescription: 'Task description'
   automationFramework: 'Cucumber'
-  projectId: '6'
-  releaseId: '13'
+  projectId: '3'
+  releaseId: '5'
   cycleName: 'CucumberFeature'
-  cycleEndDateStr: '03/24/2022'
-  cycleStartDateStr: '03/12/2022'
+  cycleEndDateStr: '03/18/2023'
+  cycleStartDateStr: '03/12/2023'
   isReuse: 'true'
   appendDateTimeInCycleName: 'false'
   phaseName: 'FeatureDemo'
   testRepositoryPath: 'Release 1.0 > FeatureDemo'
-  jobDetailTcrCatalogTreeId: '105'
+  jobDetailTcrCatalogTreeId: '42'
   assignResultsTo: '-10'
   #timeStamp: 'false'
 
@@ -37,7 +37,7 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    # The type of runner that the job will run onddd
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -72,11 +72,10 @@ jobs:
       - name: Run a multi-line script
         run: | 
           curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
-          -H "authorization: Bearer ${{ env.TOKEN }}" \
+          -H 'authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjM3MTV9LCJpYXQiOjE2NzM2MTY0MzZ9.LgUMs1oTeDaJ61WIDowJKCvi4J6S2axj494TWGFWFtI' \
           -H 'content-type: multipart/form-data' \
           -F results_file=@target/cucumber-reports/Cucumber.json \
           -F language=jvm
-
 
       - name: Run the API Create and Execute Job
         run: | 
@@ -85,8 +84,9 @@ jobs:
           -H "authorization:  Bearer ${{env.ZephyrToken}}" \
           -F "fileName=@/home/runner/work/cucumber-demo/cucumber-demo/target/zephyr.xml" \
           -F "automationJobDetail={\"releaseId\":${{ env.releaseId }},\"jobName\": \"${{ env.jobName }}\",\"automationFramework\": \"${{ env.automationFramework }}\",\"cycleName\": \"${{ env.cycleName }}\",\"jobDetailTcrCatalogTreeId\":${{ env.jobDetailTcrCatalogTreeId }},\"projectId\":${{ env.projectId }},\"testRepositoryPath\": \"${{ env.testRepositoryPath }}\",\"cycleEndDateStr\": \"${{ env.cycleEndDateStr }}\",\"cycleStartDateStr\": \"${{ env.cycleStartDateStr }}\",\"isReuse\": ${{ env.isReuse }},\"assignResultsTo\": \"${{ env.assignResultsTo }}\",\"phaseName\": \"${{ env.phaseName }}\"}")
-        #echo "ID=$abc" >> "$GITHUB_ENV"
-     # - run: echo "$ID"
+      - run: |   
+           echo "ID=$abc" >> "$GITHUB_ENV"
+      - run: echo $abc
 
       # Runs a set of commands using the runners shell
      # - name: Start Docker
@@ -94,7 +94,7 @@ jobs:
      #     docker container run -d --name zbot74 -v  "${{ github.workspace }}/config/zephyr.xml":"/usr/src/app/zephyr.xml" -e "SERVERURL=https://qademo22.yourzephyr.com" -e "ZBOTNAME=Github" -e "APITOKEN=ec18f11093d27bf5efed71ce96aeef488d046dde" zsdockerbuild/zsdockerimage:zbot74
      #     sleep 10
           
-             # Runs a set of commands using the runners shell
+             # Runs a set of commands using the runners shell..
      # - name: Run the Vortex Create Job
     #    run: | 
      #    abc=$( curl -u test.manager:test.manager POST  https://qademo22.yourzephyr.com/flex/services/rest/v3/automation/job/detail -H 'Content-Type: application/json' -d '{"resultPath":"/usr/src/app/zephyr.xml","zbotAgentMachine":"Github ( 127.0.0.1 )","cycleEndDateStr":"09/30/2021","cycleStartDateStr":"09/01/2021","isDateStr":true,"cycleName":"Github_Action","testRepositoryPath":"Release 1.0 > Node1","assignResultsTo":"-10","isReuse":true,"jobName":"GitHub_Job","jobDescription":"","automationFramework":"Cucumber","projectId":1,"releaseId":1,"jobDetailTcrCatalogTreeId":1,"phaseName":"Node1"}' | jq '.id' )
