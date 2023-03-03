@@ -72,7 +72,7 @@ jobs:
       - name: Run a multi-line script
         run: | 
           curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
-          -H 'authorization:Bearer 446a97d9-f14d-485f-adf7-a06fd0f5c46a' \
+          -H 'authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjM3MTV9LCJpYXQiOjE2Nzc4NDYxOTh9.9WlVPWd2VnSjSibKSQxnfhJHS7K4jj6tzC5_WOXDEfU' \
           -H 'content-type: multipart/form-data' \
           -F results_file=@target/cucumber-reports/Cucumber.json \
           -F language=jvm
